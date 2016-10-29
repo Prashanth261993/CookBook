@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
+    render :html => '<h1>Hello</h1>'
   end
 
   def profile
