@@ -1,0 +1,37 @@
+<section id ='main-content'>
+  <section class = 'wrapper'>
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-file-text-o"></i> Write your recipe</h3>
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class = "col-lg-10">
+        <%= form_for @article do |f| %>
+            <div>
+              <%= f.label :title %>
+            </div>
+            <div>
+              <%= f.text_field :title , :class => 'form-control'%>
+            </div>
+            <div>
+              <%= f.label :content %>
+            </div>
+            <div>
+              <%= f.cktext_area :content, rows: 10 %>
+            </div>
+            <div>
+              <%=f.label :Cuisine %>
+            </div>
+            <div>
+              <%= f.select(:cuisine_id, Cuisine.all.collect {|a| [a.name, a.id]}) -%>
+            </div>
+            <div>
+              <%= f.submit %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</section>

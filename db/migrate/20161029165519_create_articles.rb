@@ -7,7 +7,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.string :time_to_prepare
       t.text :content
 
-      t.timestamp
+      t.timestamps null: false
     end
     add_index :articles, :title
     add_index :articles, :cuisine_id

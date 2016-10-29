@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Cuisine.create(name: 'Indian')
+Cuisine.create(name: 'Chinese')
+Cuisine.create(name: 'Mexican')
+Cuisine.create(name: 'Oriental')
+Cuisine.create(name: 'Thai')
+Cuisine.create(name: 'American')

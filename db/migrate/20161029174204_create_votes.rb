@@ -4,6 +4,7 @@ class CreateVotes < ActiveRecord::Migration[5.0]
       t.integer :entity_id, null: false
       t.string :entity_type, null: false
       t.integer :user_id, null:false
+      t.timestamps null: false
     end
     add_index :votes, :entity_id
     add_index :votes, :entity_type

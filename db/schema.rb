@@ -16,18 +16,38 @@ ActiveRecord::Schema.define(version: 20161029174204) do
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.text    "title",           null: false
-    t.integer "author_id",       null: false
-    t.integer "cuisine_id"
-    t.string  "time_to_prepare"
-    t.text    "content"
+    t.text     "title",           null: false
+    t.integer  "author_id",       null: false
+    t.integer  "cuisine_id"
+    t.string   "time_to_prepare"
+    t.text     "content"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["cuisine_id"], name: "index_articles_on_cuisine_id", using: :btree
     t.index ["time_to_prepare"], name: "index_articles_on_time_to_prepare", using: :btree
     t.index ["title"], name: "index_articles_on_title", using: :btree
   end
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.string   "data_fingerprint"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+  end
+
   create_table "cuisines", force: :cascade do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_cuisines_on_name", using: :btree
   end
 
@@ -57,9 +77,11 @@ ActiveRecord::Schema.define(version: 20161029174204) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "entity_id",   null: false
-    t.string  "entity_type", null: false
-    t.integer "user_id",     null: false
+    t.integer  "entity_id",   null: false
+    t.string   "entity_type", null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["entity_id"], name: "index_votes_on_entity_id", using: :btree
     t.index ["entity_type"], name: "index_votes_on_entity_type", using: :btree
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
